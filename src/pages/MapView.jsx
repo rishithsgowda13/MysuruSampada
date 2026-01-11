@@ -34,7 +34,7 @@ const MapView = () => {
             {/* Left side: Interactive Map */}
             <div className="card" style={{ height: '100%', overflow: 'hidden', position: 'relative' }}>
                 <iframe
-                    title="Mysuru Unseen Map"
+                    title="Mysuru Sampada Map"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

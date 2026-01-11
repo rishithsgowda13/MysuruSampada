@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
 
     const location = useLocation();
     const hideNavbarRoutes = ['/login', '/signup', '/forgot-password'];
-    const showNavbar = !hideNavbarRoutes.includes(location.pathname);
+    const showNavbar = !hideNavbarRoutes.includes(location.pathname) && !location.pathname.startsWith('/voyage');
 
     return (
         <>

@@ -63,7 +63,7 @@ const translations = {
         ready_explore: "Ready to explore Mysuru?",
         explore_mysore: "Explore Mysore",
         explore_desc: "Discover hidden gems and cultural heritage.",
-        trip_planning: "Trip Planning",
+        trip_planning: "Your Travel Agent",
         trip_desc: "Curate your perfect Mysore itinerary.",
         trips: "Trips",
         trips_desc: "Manage your upcoming and past journeys.",
@@ -136,7 +136,7 @@ const translations = {
         artists_desc: "Local Art & Crafts",
 
         // Trip Planning Page
-        trip_planner: "Trip Planner",
+        trip_planner: "Your Travel Agent",
         who_travelling: "Who are you travelling with?",
         how_long_stay: "How long is your stay?",
         ai_curated: "AI Curated Itinerary",
@@ -230,7 +230,7 @@ const translations = {
         ready_explore: "मैसूरु घूमने के लिए तैयार हैं?",
         explore_mysore: "मैसूर एक्सप्लोर करें",
         explore_desc: "छिपे हुए रत्नों और सांस्कृतिक विरासत की खोज करें।",
-        trip_planning: "यात्रा योजना",
+        trip_planning: "आपका ट्रैवल एजेंट",
         trip_desc: "अपनी संपूर्ण मैसूर यात्रा कार्यक्रम तैयार करें।",
         trips: "यात्राएं",
         trips_desc: "अपनी आगामी और पिछली यात्राओं का प्रबंधन करें।",
@@ -303,7 +303,7 @@ const translations = {
         artists_desc: "स्थानीय कला और शिल्प",
 
         // Trip Planning Page
-        trip_planner: "यात्रा योजनाकार",
+        trip_planner: "आपका ट्रैवल एजेंट",
         who_travelling: "आप किसके साथ यात्रा कर रहे हैं?",
         how_long_stay: "आपका प्रवास कितने दिनों का है?",
         ai_curated: "AI क्यूरेटेड यात्रा कार्यक्रम",
@@ -397,7 +397,7 @@ const translations = {
         ready_explore: "ಮೈಸೂರನ್ನು ಅನ್ವೇಷಿಸಲು ಸಿದ್ಧರಿದ್ದೀರಾ?",
         explore_mysore: "ಮೈಸೂರನ್ನು ಅನ್ವೇಷಿಸಿ",
         explore_desc: "ಅಡಗಿರುವ ರತ್ನಗಳು ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯನ್ನು ಅನ್ವೇಷಿಸಿ.",
-        trip_planning: "ಪ್ರಯಾಣ ಯೋಜನೆ",
+        trip_planning: "ನಿಮ್ಮ ಟ್ರಾವೆಲ್ ಏಜೆಂಟ್",
         trip_desc: "ನಿಮ್ಮ ಪರಿಪೂರ್ಣ ಮೈಸೂರು ಪ್ರವಾಸದ ವಿವರವನ್ನು ರೂಪಿಸಿ.",
         trips: "ಪ್ರಯಾಣಗಳು",
         trips_desc: "ನಿಮ್ಮ ಮುಂಬರುವ ಮತ್ತು ಹಿಂದಿನ ಪ್ರಯಾಣಗಳನ್ನು ನಿರ್ವಹಿಸಿ.",
@@ -470,7 +470,7 @@ const translations = {
         artists_desc: "ಸ್ಥಳೀಯ ಕಲೆ ಮತ್ತು ಕರಕುಶಲ",
 
         // Trip Planning Page
-        trip_planner: "ಪ್ರವಾಸ ಯೋಜಕ",
+        trip_planner: "ನಿಮ್ಮ ಟ್ರಾವೆಲ್ ಏಜೆಂಟ್",
         who_travelling: "ನೀವು ಯಾರೊಂದಿಗೆ ಪ್ರಯಾಣಿಸುತ್ತಿದ್ದೀರಿ?",
         how_long_stay: "ನಿಮ್ಮ ವಾಸ್ತವ್ಯ ಎಷ್ಟು ದಿನಗಳದ್ದು?",
         ai_curated: "AI ಕ್ಯೂರೇಟೆಡ್ ಪ್ರವಾಸ ವಿವರ",

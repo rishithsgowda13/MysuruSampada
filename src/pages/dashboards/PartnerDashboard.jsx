@@ -136,12 +136,12 @@ const PartnerDashboard = () => {
             {/* <AdModal /> */}
             <header style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ padding: '1rem', background: 'var(--color-bg-secondary)', borderRadius: '50%' }}>
-                        <Briefcase size={32} color="var(--color-secondary)" />
+                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--color-secondary)' }}>
+                        <img src="/mysuru-sampada-logo.jpg" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div>
-                        <h2 className="text-gradient" style={{ fontSize: '2rem' }}>Partner Portal</h2>
-                        <p style={{ color: 'var(--color-text-muted)' }}>Hello, {partnerName} | {activeTab === 'dashboard' ? 'Manage your listings and collaborations' : 'Manage your preferences'}</p>
+                        <h2 className="text-gradient" style={{ fontSize: '2rem' }}>Mysuru Sampada</h2>
+                        <p style={{ color: 'var(--color-text-muted)' }}>Partner Portal | Hello, {partnerName}</p>
                     </div>
                 </div>
 

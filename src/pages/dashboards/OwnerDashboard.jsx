@@ -200,12 +200,12 @@ const OwnerDashboard = () => {
         <div className="page-container">
             <header style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <div style={{ padding: '1rem', background: 'var(--color-bg-secondary)', borderRadius: '50%' }}>
-                        <Crown size={32} color="var(--color-primary)" />
+                    <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--color-primary)' }}>
+                        <img src="/mysuru-sampada-logo.jpg" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div>
-                        <h2 className="text-gradient" style={{ fontSize: '2rem', margin: 0 }}>{t('admin_console')}</h2>
-                        <p style={{ color: 'var(--color-text-muted)' }}>Hello, {profile.name} | {activeTab === 'dashboard' ? t('platform_overview') : t('system_configuration')}</p>
+                        <h2 className="text-gradient" style={{ fontSize: '2rem', margin: 0 }}>Mysuru Sampada</h2>
+                        <p style={{ color: 'var(--color-text-muted)' }}>Admin Console | Hello, {profile.name}</p>
                     </div>
                 </div>
 
