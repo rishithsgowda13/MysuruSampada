@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { MapPin, LogOut } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
     const { t } = useLanguage();
+    const { logout } = useAuth();
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = React.useState(false);
 
     // Close menu when clicking outside or navigating
@@ -65,6 +68,29 @@ const Navbar = () => {
                 </li>
                 <li><Link to="/explore/hidden-gems" onClick={() => setIsOpen(false)}>{t('hidden_gems')}</Link></li>
                 <li><Link to="/user-dashboard" onClick={() => setIsOpen(false)}>{t('dashboard')}</Link></li>
+                <li>
+                    <button
+                        onClick={() => {
+                            logout();
+                            navigate('/login');
+                            setIsOpen(false);
+                        }}
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            color: 'white',
+                            cursor: 'pointer',
+                            fontSize: '1rem',
+                            fontWeight: '500',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem'
+                        }}
+                    >
+                        <LogOut size={18} />
+                        {t('logout', 'Logout')}
+                    </button>
+                </li>
             </ul>
         </nav>
     );

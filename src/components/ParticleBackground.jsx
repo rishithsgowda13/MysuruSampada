@@ -140,8 +140,8 @@ const ParticleBackground = () => {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                zIndex: -1, // Behind everything
-                background: 'transparent', // Allow CSS body background to show
+                zIndex: 0, // Base layer for dark mode
+                background: '#000000', // Pure black background
                 pointerEvents: 'none'
             }}
         />

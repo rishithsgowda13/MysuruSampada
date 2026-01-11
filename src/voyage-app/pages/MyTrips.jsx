@@ -40,12 +40,12 @@ export default function MyTrips() {
             {/* Search & Filter */}
             <div className="flex gap-3 mb-6">
                 <div className="relative flex-1">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#5c1a1a]/50" />
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--color-text-muted)]" />
                     <Input
                         placeholder="Search trips..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-10 h-12 bg-white/30 border-white/30 text-[#5c1a1a] placeholder:text-[#5c1a1a]/50 rounded-xl"
+                        className="pl-10 h-12 bg-[var(--color-bg-secondary)]/30 border-white/30 text-[var(--color-text-main)] placeholder:text-[var(--color-text-muted)] rounded-xl"
                     />
                 </div>
             </div>
@@ -57,8 +57,8 @@ export default function MyTrips() {
                         key={status}
                         onClick={() => setFilter(status)}
                         className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${filter === status
-                            ? 'bg-[#8b1a1a] text-white'
-                            : 'bg-white/30 text-[#5c1a1a]/70 hover:bg-white/40'
+                            ? 'bg-[var(--color-primary)] text-white'
+                            : 'bg-[var(--color-bg-secondary)]/50 text-[var(--color-text-muted)] hover:bg-[var(--color-bg-secondary)]'
                             }`}
                     >
                         {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -69,12 +69,12 @@ export default function MyTrips() {
             {/* Trips List */}
             {isLoading ? (
                 <div className="flex items-center justify-center py-20">
-                    <div className="w-8 h-8 border-2 border-[#8b1a1a] border-t-transparent rounded-full animate-spin" />
+                    <div className="w-8 h-8 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" />
                 </div>
             ) : filteredTrips.length === 0 ? (
                 <div className="glass-card rounded-2xl p-8 text-center">
-                    <MapPin className="w-12 h-12 text-[#5c1a1a]/50 mx-auto mb-4" />
-                    <p className="text-[#5c1a1a]/70">No trips found</p>
+                    <MapPin className="w-12 h-12 text-[var(--color-text-muted)] mx-auto mb-4" />
+                    <p className="text-[var(--color-text-muted)]">No trips found</p>
                 </div>
             ) : (
                 <div className="space-y-4">
@@ -105,8 +105,8 @@ export default function MyTrips() {
                                                 </span>
                                             </div>
                                         </div>
-                                        <Badge className={`${trip.status === 'planning' ? 'bg-[#8b1a1a]/20 text-[#8b1a1a]' :
-                                            trip.status === 'ongoing' ? 'bg-[#f78b8b]/30 text-[#8b1a1a]' :
+                                        <Badge className={`${trip.status === 'planning' ? 'bg-[var(--color-primary)]/20 text-[var(--color-primary)]' :
+                                            trip.status === 'ongoing' ? 'bg-[var(--color-accent)]/30 text-[var(--color-primary)]' :
                                                 'bg-[#5a9a7a]/20 text-[#5a9a7a]'
                                             } border-0`}>
                                             {trip.status || 'planning'}

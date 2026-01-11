@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
   --font-main: 'Outfit', sans-serif;
@@ -14,51 +14,66 @@
 body.light-mode {
   --color-bg-light: #FEFDF5;
   --color-bg-secondary: #FAEBD7;
-  /* MegaTron Gradient for Light Mode Background */
-  --color-bg-main-gradient: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  /* Gradients Removed */
+  --gradient-main: #FAEBD7;
+  --gradient-main: #FAEBD7;
+  --gradient-hero: #FEFDF5;
+  color-scheme: light;
+
+  /* Maroon and Cream Theme */
   --color-primary: #800000;
-  --color-primary-hover: #990000;
-  --color-secondary: #A65D4E;
+  --color-primary-hover: #5c1a1a;
+  --color-secondary: #FAEBD7;
   --color-accent: #D4A574;
 
-  --color-text-main: #3D2817;
-  --color-text-muted: #6B5B4F;
-  --color-white: #FFFBE6;
-
-  /* Gradients */
-  --gradient-main: linear-gradient(135deg, #FEFDF5 0%, #FAEBD7 100%);
-  --gradient-hero: linear-gradient(180deg, #FEFDF5 0%, #FAEBD7 100%);
+  --color-text-main: #3E2723;
+  --color-text-muted: #5D4037;
+  --color-dashboard-title: #800000;
+  /* Maroon for Dashboard Title in Light Mode */
+  --color-settings-icon: #5D4037;
+  /* Maroon for Settings Icon in Light Mode */
+  --color-white: #FFFFFF;
 
   /* Shadows & Borders */
-  --shadow-sm: 0 2px 8px rgba(61, 40, 23, 0.08);
-  --shadow-md: 0 4px 16px rgba(61, 40, 23, 0.12);
-  --shadow-lg: 0 8px 24px rgba(61, 40, 23, 0.15);
-  --border-light: 1px solid rgba(107, 44, 56, 0.15);
+  --shadow-sm: 0 2px 8px rgba(128, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(128, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(128, 0, 0, 0.15);
+  --border-light: 1px solid rgba(128, 0, 0, 0.15);
 }
 
-/* Dark Mode (Original Black Minimalist Theme) */
+/* Dark Mode (Black & Particles Theme) */
 body.dark-mode {
-  --color-bg-light: #0a0a0a;
+  --color-bg-light: #000000;
+  /* Pure Black */
   --color-bg-secondary: #1a1a1a;
   --color-bg-main-gradient: none;
-  /* Disable gradient in dark mode */
-  --color-primary: #8b5cf6;
-  /* A clean neon violet for the old dark theme */
-  --color-primary-hover: #7c3aed;
-  --color-secondary: #d946ef;
-  --color-accent: #3b82f6;
+  /* No gradient, allow particles to show */
+  color-scheme: dark;
+
+  --color-primary: #3b82f6;
+  /* Bright Blue for buttons in Dark Mode */
+  --color-primary-hover: #2563eb;
+  /* Darker Blue on hover */
+  --color-secondary: #60a5fa;
+  --color-accent: #bfdbfe;
 
   --color-text-main: #ffffff;
-  --color-text-muted: #94a3b8;
-  --color-white: #0a0a0a;
+  --color-text-muted: #a3a3a3;
+  --color-white: #000000;
+  /* In dark mode, 'white' tokens often map to dark backgrounds, but need care */
 
-  --gradient-main: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  --gradient-hero: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  --color-dashboard-title: #FFFDD0;
+  /* Cream for Dashboard Title in Dark Mode */
+  --color-settings-icon: #FFFFFF;
+  /* White for Settings Icon in Dark Mode */
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.7);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.9);
-  --border-light: 1px solid rgba(255, 255, 255, 0.1);
+  --gradient-main: none;
+  --gradient-hero: none;
+
+  --shadow-sm: 0 2px 8px rgba(255, 255, 255, 0.1);
+  --shadow-md: 0 4px 16px rgba(255, 255, 255, 0.15);
+  --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.2);
+  --border-light: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -116,7 +131,8 @@ body.light-mode::before {
 
 /* Navigation Header */
 .navbar {
-  background: var(--color-white);
+  background: var(--color-primary);
+  /* Maroon */
   box-shadow: var(--shadow-sm);
   padding: 1rem 2rem;
   display: flex;
@@ -125,6 +141,7 @@ body.light-mode::before {
   position: sticky;
   top: 0;
   z-index: 100;
+  color: var(--color-white);
 }
 
 .navbar-logo {
@@ -133,7 +150,8 @@ body.light-mode::before {
   gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-white);
+  /* White text on Maroon */
   text-decoration: none;
 }
 
@@ -145,14 +163,18 @@ body.light-mode::before {
 }
 
 .navbar-nav a {
-  color: var(--color-text-main);
+  color: var(--color-white);
+  /* White text */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
+  opacity: 0.9;
 }
 
 .navbar-nav a:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary);
+  /* Cream hover */
+  opacity: 1;
 }
 
 .navbar-actions {
@@ -176,7 +198,8 @@ body.light-mode::before {
 
 .btn-primary {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-bg-light);
+  /* Cream Text */
   border: none;
   padding: 12px 28px;
   border-radius: 50px;
@@ -281,10 +304,7 @@ body.light-mode::before {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-primary);
 }
 
 /* Animations */
@@ -460,7 +480,8 @@ input:focus {
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--color-text-main);
+    color: var(--color-white);
+    /* White icon on Maroon */
   }
 
   /* Typography Adjustments */
@@ -511,7 +532,7 @@ input:focus {
 .dashboard-container {
   min-height: 100vh;
   position: relative;
-  background: linear-gradient(90deg, #D1F2EB 0%, #F9E79F 50%, #F5B7B1 100%);
+  background: transparent;
   padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
@@ -576,7 +597,7 @@ input:focus {
 }
 
 .dashboard-feature-card {
-  background-color: #FEFDF5;
+  background-color: var(--color-white);
   border-radius: 20px;
   padding: 4rem 2rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -602,13 +623,13 @@ input:focus {
 .feature-title-large {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2C1810;
+  color: var(--color-text-main);
   margin-bottom: 1rem;
   font-family: var(--font-main);
 }
 
 .feature-desc-large {
-  color: #5D4037;
+  color: var(--color-text-muted);
   font-size: 1rem;
   opacity: 0.8;
 }
@@ -624,7 +645,7 @@ input:focus {
 
 .icon-circle {
   padding: 12px;
-  background-color: #FEFDF5;
+  background-color: var(--color-white);
   border-radius: 50%;
   display: flex;
   align-items: center;

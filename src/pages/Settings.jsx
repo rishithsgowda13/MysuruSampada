@@ -106,15 +106,13 @@ const Settings = () => {
     const handleLogout = () => {
         if (window.confirm("Are you sure you want to log out?")) {
             localStorage.clear(); // Or specific keys
-            navigate('/landing');
+            navigate('/login');
         }
     };
 
     return (
-        <div style={{
+        <div className="page-container" style={{
             minHeight: '100vh',
-            background: 'linear-gradient(90deg, #D1F2EB 0%, #F9E79F 50%, #F5B7B1 100%)',
-            padding: '2rem',
             fontFamily: 'var(--font-main, sans-serif)',
             position: 'relative'
         }}>
@@ -205,15 +203,15 @@ const Settings = () => {
                         display: 'flex',
                         alignItems: 'center',
                         textDecoration: 'none',
-                        color: '#3E2723',
+                        color: 'var(--color-text-main)',
                         marginRight: '1rem',
-                        background: 'rgba(255,255,255,0.5)',
+                        background: 'var(--color-bg-secondary)',
                         padding: '8px',
                         borderRadius: '50%'
                     }}>
                         <ChevronLeft size={24} />
                     </Link>
-                    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#3E2723', margin: 0 }}>
+                    <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--color-text-main)', margin: 0 }}>
                         {t('settings_title') || 'Settings'}
                     </h1>
                 </div>
@@ -221,22 +219,22 @@ const Settings = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
                     {/* Preferences Section */}
-                    <div style={{
-                        backgroundColor: '#FEFDF5',
+                    <div className="card" style={{
+                        backgroundColor: 'var(--color-white)',
                         borderRadius: '20px',
                         padding: '2rem',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                        boxShadow: 'var(--shadow-sm)'
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                            <SettingsIcon size={24} color="#8B0000" />
-                            <h3 style={{ fontSize: '1.5rem', color: '#2C1810', margin: 0 }}>Preferences</h3>
+                            <SettingsIcon size={24} color="var(--color-primary)" />
+                            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', margin: 0 }}>Preferences</h3>
                         </div>
 
                         <div style={{ display: 'grid', gap: '1.5rem' }}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <Sun size={20} color="#5D4037" />
-                                    <span style={{ color: '#5D4037' }}>{t('appearance') || 'Appearance'}</span>
+                                    <Sun size={20} color="var(--color-text-muted)" />
+                                    <span style={{ color: 'var(--color-text-main)' }}>{t('appearance') || 'Appearance'}</span>
                                 </div>
                                 <ThemeToggle />
                             </div>
@@ -257,58 +255,53 @@ const Settings = () => {
                     </div>
 
                     {/* Edit Profile Section */}
-                    <div style={{
-                        backgroundColor: '#FEFDF5',
+                    <div className="card" style={{
+                        backgroundColor: 'var(--color-white)',
                         borderRadius: '20px',
                         padding: '2rem',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                        boxShadow: 'var(--shadow-sm)'
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                            <User size={24} color="#8B0000" />
-                            <h3 style={{ fontSize: '1.5rem', color: '#2C1810', margin: 0 }}>Edit Profile</h3>
+                            <User size={24} color="var(--color-primary)" />
+                            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', margin: 0 }}>Edit Profile</h3>
                         </div>
                         <form onSubmit={handleSaveProfile} style={{ display: 'grid', gap: '1.5rem' }}>
                             <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>Full Name</label>
+                                <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Full Name</label>
                                 <input
                                     type="text"
                                     name="name"
                                     value={profile.name}
                                     onChange={handleProfileChange}
-                                    style={{ padding: '0.8rem', borderRadius: '8px', border: '1px solid #DDD', backgroundColor: '#FFF' }}
+                                    style={{ padding: '0.8rem', borderRadius: '8px', border: 'var(--border-light)', backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}
                                 />
                             </div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                 <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                    <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>Phone Number</label>
+                                    <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Phone Number</label>
                                     <input
                                         type="tel"
                                         name="phone"
                                         value={profile.phone}
                                         onChange={handleProfileChange}
-                                        style={{ padding: '0.8rem', borderRadius: '8px', border: '1px solid #DDD', backgroundColor: '#FFF' }}
+                                        style={{ padding: '0.8rem', borderRadius: '8px', border: 'var(--border-light)', backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}
                                     />
                                 </div>
                                 <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                    <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>Email Address</label>
+                                    <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Email Address</label>
                                     <input
                                         type="email"
                                         name="email"
                                         value={profile.email}
                                         onChange={handleProfileChange}
-                                        style={{ padding: '0.8rem', borderRadius: '8px', border: '1px solid #DDD', backgroundColor: '#FFF' }}
+                                        style={{ padding: '0.8rem', borderRadius: '8px', border: 'var(--border-light)', backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}
                                     />
                                 </div>
                             </div>
                             <button
                                 type="submit"
+                                className="btn-primary"
                                 style={{
-                                    backgroundColor: '#8B0000',
-                                    color: 'white',
-                                    padding: '0.8rem 2rem',
-                                    borderRadius: '25px',
-                                    border: 'none',
-                                    fontWeight: 'bold',
                                     width: 'fit-content',
                                     cursor: 'pointer'
                                 }}
@@ -319,47 +312,47 @@ const Settings = () => {
                     </div>
 
                     {/* Security Section */}
-                    <div style={{
-                        backgroundColor: '#FEFDF5',
+                    <div className="card" style={{
+                        backgroundColor: 'var(--color-white)',
                         borderRadius: '20px',
                         padding: '2rem',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                        boxShadow: 'var(--shadow-sm)'
                     }}>
-                        <h3 style={{ fontSize: '1.5rem', color: '#2C1810', marginBottom: '1.5rem' }}>Security</h3>
+                        <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>Security</h3>
 
                         <form onSubmit={handleUpdatePassword} style={{ display: 'grid', gap: '1rem' }}>
-                            <h4 style={{ color: '#3E2723', margin: 0 }}>Change Password</h4>
+                            <h4 style={{ color: 'var(--color-text-main)', margin: 0 }}>Change Password</h4>
 
                             <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>Old Password</label>
+                                <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Old Password</label>
                                 <input
                                     type="password"
                                     name="old"
                                     value={passwords.old}
                                     onChange={handlePasswordChange}
-                                    style={{ padding: '0.8rem', borderRadius: '8px', border: '1px solid #DDD', backgroundColor: '#FFF' }}
+                                    style={{ padding: '0.8rem', borderRadius: '8px', border: 'var(--border-light)', backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}
                                 />
                             </div>
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                                 <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                    <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>New Password</label>
+                                    <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>New Password</label>
                                     <input
                                         type="password"
                                         name="new"
                                         value={passwords.new}
                                         onChange={handlePasswordChange}
-                                        style={{ padding: '0.8rem', borderRadius: '8px', border: '1px solid #DDD', backgroundColor: '#FFF' }}
+                                        style={{ padding: '0.8rem', borderRadius: '8px', border: 'var(--border-light)', backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}
                                     />
                                 </div>
                                 <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                    <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>Re-enter New Password</label>
+                                    <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Re-enter New Password</label>
                                     <input
                                         type="password"
                                         name="confirm"
                                         value={passwords.confirm}
                                         onChange={handlePasswordChange}
-                                        style={{ padding: '0.8rem', borderRadius: '8px', border: '1px solid #DDD', backgroundColor: '#FFF' }}
+                                        style={{ padding: '0.8rem', borderRadius: '8px', border: 'var(--border-light)', backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}
                                     />
                                 </div>
                             </div>
@@ -370,7 +363,7 @@ const Settings = () => {
                                     style={{
                                         background: 'none',
                                         border: 'none',
-                                        color: '#8B0000',
+                                        color: 'var(--color-primary)',
                                         cursor: 'pointer',
                                         textDecoration: 'underline',
                                         padding: 0
@@ -380,13 +373,8 @@ const Settings = () => {
                                 </button>
                                 <button
                                     type="submit"
+                                    className="btn-primary"
                                     style={{
-                                        backgroundColor: '#8B0000',
-                                        color: 'white',
-                                        padding: '0.8rem 2rem',
-                                        borderRadius: '25px',
-                                        border: 'none',
-                                        fontWeight: 'bold',
                                         cursor: 'pointer'
                                     }}
                                 >
@@ -397,23 +385,23 @@ const Settings = () => {
                     </div>
 
                     {/* Delete Account Section */}
-                    <div style={{
-                        backgroundColor: '#FEFDF5',
+                    <div className="card" style={{
+                        backgroundColor: 'var(--color-white)',
                         borderRadius: '20px',
                         padding: '2rem',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                        boxShadow: 'var(--shadow-sm)'
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D32F2F', marginBottom: '1rem' }}>
                             <Trash2 size={20} />
                             <h4 style={{ fontSize: '1.2rem', margin: 0 }}>Delete Account</h4>
                         </div>
-                        <p style={{ color: '#5D4037', marginBottom: '1.5rem' }}>
+                        <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>
                             Once you delete your account, there is no going back. Please be certain.
                         </p>
 
                         <form onSubmit={handleDeleteAccount} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             <div style={{ display: 'grid', gap: '0.5rem' }}>
-                                <label style={{ color: '#5D4037', fontSize: '0.9rem' }}>Enter Password to Confirm</label>
+                                <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Enter Password to Confirm</label>
                                 <input
                                     type="password"
                                     value={deletePassword}
@@ -422,7 +410,8 @@ const Settings = () => {
                                         padding: '0.8rem',
                                         borderRadius: '8px',
                                         border: '1px solid #FFCDD2',
-                                        backgroundColor: '#FFEBEE',
+                                        backgroundColor: 'var(--color-bg-light)',
+                                        color: 'var(--color-text-main)',
                                         width: '100%'
                                     }}
                                 />
@@ -447,11 +436,11 @@ const Settings = () => {
                     </div>
 
                     {/* Logout Section */}
-                    <div style={{
-                        backgroundColor: '#FEFDF5',
+                    <div className="card" style={{
+                        backgroundColor: 'var(--color-white)',
                         borderRadius: '20px',
                         padding: '2rem',
-                        boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
+                        boxShadow: 'var(--shadow-sm)',
                         textAlign: 'center'
                     }}>
                         <button

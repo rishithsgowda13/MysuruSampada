@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
         <>
             {theme === 'dark' && <ParticleBackground />}
             {showNavbar && <Navbar />}
-            <div className="layout-content" style={{ position: 'relative' }}>
+            <div className="layout-content" style={{ position: 'relative', zIndex: 1 }}>
                 {children}
             </div>
         </>

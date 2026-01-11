@@ -140,7 +140,7 @@ const PartnerDashboard = () => {
                         <img src="/mysuru-sampada-logo.jpg" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div>
-                        <h2 className="text-gradient" style={{ fontSize: '2rem' }}>Mysuru Sampada</h2>
+                        <h2 className="text-gradient" style={{ fontSize: '2rem', color: 'var(--color-dashboard-title)' }}>Mysuru Sampada</h2>
                         <p style={{ color: 'var(--color-text-muted)' }}>Partner Portal | Hello, {partnerName}</p>
                     </div>
                 </div>

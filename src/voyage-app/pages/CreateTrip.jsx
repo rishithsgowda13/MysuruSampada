@@ -103,13 +103,13 @@ export default function CreateTrip() {
             {/* Header with Back Button */}
             <div className="relative mb-10">
                 <Link to={createPageUrl('Home')}>
-                    <button className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#faeedb]/60 flex items-center justify-center hover:bg-[#faeedb] transition-colors shadow-sm">
-                        <ArrowLeft className="w-5 h-5 text-[#5c1a1a]" />
+                    <button className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[var(--color-bg-secondary)]/60 flex items-center justify-center hover:bg-[var(--color-bg-secondary)] transition-colors shadow-sm">
+                        <ArrowLeft className="w-5 h-5 text-[var(--color-primary)]" />
                     </button>
                 </Link>
                 <div className="text-center pt-2">
-                    <h1 className="text-4xl font-black text-[#5c1a1a] mb-2 tracking-tight">Create New Trip</h1>
-                    <p className="text-[#5c1a1a]/60 text-sm font-medium">AI will generate personalized recommendations for your journey</p>
+                    <h1 className="text-4xl font-black text-[var(--color-text-main)] mb-2 tracking-tight">Create New Trip</h1>
+                    <p className="text-[var(--color-text-main)]/60 text-sm font-medium">AI will generate personalized recommendations for your journey</p>
                 </div>
             </div>
 
@@ -121,29 +121,29 @@ export default function CreateTrip() {
             >
                 {/* Trip Name */}
                 <div className="space-y-2">
-                    <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Trip Name</Label>
+                    <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Trip Name</Label>
                     <Input
                         value={tripData.name}
                         onChange={(e) => setTripData(prev => ({ ...prev, name: e.target.value }))}
                         placeholder="e.g., Kerala Adventure 2024"
-                        className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] placeholder:text-[#5c1a1a]/40 rounded-2xl focus:ring-0 focus:border-transparent text-lg pl-6"
+                        className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] placeholder:text-[var(--color-text-main)]/40 rounded-2xl focus:ring-0 focus:border-transparent text-lg pl-6"
                     />
                 </div>
 
                 {/* Starting Location */}
                 <div className="space-y-2">
-                    <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Starting Location</Label>
+                    <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Starting Location</Label>
                     <Input
                         value={tripData.start_place}
                         onChange={(e) => setTripData(prev => ({ ...prev, start_place: e.target.value }))}
                         placeholder="e.g., Bangalore"
-                        className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] placeholder:text-[#5c1a1a]/40 rounded-2xl focus:ring-0 focus:border-transparent text-lg pl-6"
+                        className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] placeholder:text-[var(--color-text-main)]/40 rounded-2xl focus:ring-0 focus:border-transparent text-lg pl-6"
                     />
                 </div>
 
                 {/* Destinations */}
                 <div className="space-y-2">
-                    <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Destinations</Label>
+                    <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Destinations</Label>
                     <div className="space-y-3">
                         {tripData.destinations.map((dest, index) => (
                             <div key={index} className="flex items-center gap-3">
@@ -151,12 +151,12 @@ export default function CreateTrip() {
                                     value={dest}
                                     onChange={(e) => updateDestination(index, e.target.value)}
                                     placeholder={`Destination ${index + 1}`}
-                                    className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] placeholder:text-[#5c1a1a]/40 rounded-2xl focus:ring-0 focus:border-transparent text-lg pl-6 flex-1"
+                                    className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] placeholder:text-[var(--color-text-muted)] rounded-2xl focus:ring-0 focus:border-transparent text-lg pl-6 flex-1"
                                 />
                                 {tripData.destinations.length > 1 && (
                                     <button
                                         onClick={() => removeDestination(index)}
-                                        className="w-14 h-14 rounded-2xl bg-[#8b1a1a]/10 text-[#8b1a1a] flex items-center justify-center hover:bg-[#8b1a1a]/20 transition-colors"
+                                        className="w-14 h-14 rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center hover:bg-[var(--color-primary)]/20 transition-colors"
                                     >
                                         <X className="w-6 h-6" />
                                     </button>
@@ -166,7 +166,7 @@ export default function CreateTrip() {
                     </div>
                     <button
                         onClick={addDestination}
-                        className="mt-2 w-full h-14 rounded-2xl border-2 border-dashed border-[#8b1a1a]/20 bg-[#faeedb]/30 text-[#8b1a1a] font-bold flex items-center justify-center gap-2 hover:bg-[#faeedb]/50 transition-colors"
+                        className="mt-2 w-full h-14 rounded-2xl border-2 border-dashed border-[var(--color-primary)]/20 bg-[var(--color-bg-secondary)]/30 text-[var(--color-primary)] font-bold flex items-center justify-center gap-2 hover:bg-[var(--color-bg-secondary)]/50 transition-colors"
                     >
                         <Plus className="w-5 h-5" />
                         Add Destination
@@ -176,21 +176,21 @@ export default function CreateTrip() {
                 {/* Dates */}
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Start Date</Label>
+                        <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Start Date</Label>
                         <Input
                             type="date"
                             value={tripData.start_date}
                             onChange={(e) => setTripData(prev => ({ ...prev, start_date: e.target.value }))}
-                            className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 focus:border-transparent pl-6"
+                            className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 focus:border-transparent pl-6"
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">End Date</Label>
+                        <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">End Date</Label>
                         <Input
                             type="date"
                             value={tripData.end_date}
                             onChange={(e) => setTripData(prev => ({ ...prev, end_date: e.target.value }))}
-                            className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 focus:border-transparent pl-6"
+                            className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 focus:border-transparent pl-6"
                         />
                     </div>
                 </div>
@@ -198,12 +198,12 @@ export default function CreateTrip() {
                 {/* Budget & Food */}
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Budget Type</Label>
+                        <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Budget Type</Label>
                         <Select value={tripData.budget_type} onValueChange={(v) => setTripData(prev => ({ ...prev, budget_type: v }))}>
-                            <SelectTrigger className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6 pr-4">
+                            <SelectTrigger className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6 pr-4">
                                 <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#faeedb] border-transparent rounded-2xl shadow-xl">
+                            <SelectContent className="bg-[var(--color-bg-secondary)] border-transparent rounded-2xl shadow-xl">
                                 <SelectItem value="budget">₹ Budget</SelectItem>
                                 <SelectItem value="moderate">₹₹ Medium</SelectItem>
                                 <SelectItem value="luxury">₹₹₹ Luxury</SelectItem>
@@ -211,12 +211,12 @@ export default function CreateTrip() {
                         </Select>
                     </div>
                     <div className="space-y-2">
-                        <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Food Preference</Label>
+                        <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Food Preference</Label>
                         <Select value={tripData.food_preferences} onValueChange={(v) => setTripData(prev => ({ ...prev, food_preferences: v }))}>
-                            <SelectTrigger className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6 pr-4">
+                            <SelectTrigger className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6 pr-4">
                                 <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#faeedb] border-transparent rounded-2xl shadow-xl">
+                            <SelectContent className="bg-[var(--color-bg-secondary)] border-transparent rounded-2xl shadow-xl">
                                 <SelectItem value="all">All</SelectItem>
                                 <SelectItem value="veg">Vegetarian</SelectItem>
                                 <SelectItem value="non_veg">Non Veg</SelectItem>
@@ -229,12 +229,12 @@ export default function CreateTrip() {
                 {/* Restaurant & Hotel */}
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Restaurant Type</Label>
+                        <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Restaurant Type</Label>
                         <Select value={tripData.restaurant_type} onValueChange={(v) => setTripData(prev => ({ ...prev, restaurant_type: v }))}>
-                            <SelectTrigger className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6 pr-4">
+                            <SelectTrigger className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6 pr-4">
                                 <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#faeedb] border-transparent rounded-2xl shadow-xl">
+                            <SelectContent className="bg-[var(--color-bg-secondary)] border-transparent rounded-2xl shadow-xl">
                                 <SelectItem value="street_food">Street Food</SelectItem>
                                 <SelectItem value="family">Family Restaurant</SelectItem>
                                 <SelectItem value="fine_dining">Fine Dining</SelectItem>
@@ -242,12 +242,12 @@ export default function CreateTrip() {
                         </Select>
                     </div>
                     <div className="space-y-2">
-                        <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Hotel Type</Label>
+                        <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Hotel Type</Label>
                         <Select value={tripData.hotel_type} onValueChange={(v) => setTripData(prev => ({ ...prev, hotel_type: v }))}>
-                            <SelectTrigger className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6 pr-4">
+                            <SelectTrigger className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6 pr-4">
                                 <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="bg-[#faeedb] border-transparent rounded-2xl shadow-xl">
+                            <SelectContent className="bg-[var(--color-bg-secondary)] border-transparent rounded-2xl shadow-xl">
                                 <SelectItem value="hostel">Hostel</SelectItem>
                                 <SelectItem value="budget_hotel">Budget Hotel</SelectItem>
                                 <SelectItem value="mid_range">Mid-Range</SelectItem>
@@ -259,26 +259,26 @@ export default function CreateTrip() {
 
                 {/* Travelers */}
                 <div className="space-y-2">
-                    <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Number of Travelers</Label>
+                    <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Number of Travelers</Label>
                     <Input
                         type="number"
                         min="1"
                         value={tripData.number_of_travellers}
                         onChange={(e) => setTripData(prev => ({ ...prev, number_of_travellers: parseInt(e.target.value) || 1 }))}
-                        className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6 text-lg"
+                        className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6 text-lg"
                     />
                 </div>
 
                 {/* Transport Mode */}
                 <div className="space-y-4">
-                    <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Mode of Transport</Label>
+                    <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Mode of Transport</Label>
                     <div className="grid grid-cols-2 gap-4">
                         <button
                             type="button"
                             onClick={() => setTripData(prev => ({ ...prev, transport_mode: 'personal' }))}
                             className={`h-16 rounded-[2rem] flex items-center justify-center gap-3 font-bold transition-all border-4 ${tripData.transport_mode === 'personal'
-                                ? 'bg-[#8b1a1a] text-white border-transparent shadow-xl shadow-[#8b1a1a]/30'
-                                : 'bg-[#faeedb] text-[#5c1a1a]/60 border-transparent hover:bg-[#faeedb]/80'
+                                ? 'bg-[var(--color-primary)] text-white border-transparent shadow-xl shadow-[var(--color-primary)]/30'
+                                : 'bg-[var(--color-bg-secondary)] text-[var(--color-primary)] opacity-60 border-transparent hover:bg-[var(--color-bg-secondary)]/80'
                                 }`}
                         >
                             <Car className="w-6 h-6" />
@@ -288,8 +288,8 @@ export default function CreateTrip() {
                             type="button"
                             onClick={() => setTripData(prev => ({ ...prev, transport_mode: 'public' }))}
                             className={`h-16 rounded-[2rem] flex items-center justify-center gap-3 font-bold transition-all border-4 ${tripData.transport_mode === 'public'
-                                ? 'bg-[#8b1a1a] text-white border-transparent shadow-xl shadow-[#8b1a1a]/30'
-                                : 'bg-[#faeedb] text-[#5c1a1a]/60 border-transparent hover:bg-[#faeedb]/80'
+                                ? 'bg-[var(--color-primary)] text-white border-transparent shadow-xl shadow-[var(--color-primary)]/30'
+                                : 'bg-[var(--color-bg-secondary)] text-[var(--color-primary)] opacity-60 border-transparent hover:bg-[var(--color-bg-secondary)]/80'
                                 }`}
                         >
                             <Bus className="w-6 h-6" />
@@ -306,7 +306,7 @@ export default function CreateTrip() {
                         className="space-y-6 pt-4"
                     >
                         <div className="space-y-4">
-                            <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Vehicle Type</Label>
+                            <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Vehicle Type</Label>
                             <div className="flex gap-4">
                                 {[
                                     { value: 'car', label: 'Car', icon: Car },
@@ -318,8 +318,8 @@ export default function CreateTrip() {
                                         type="button"
                                         onClick={() => setTripData(prev => ({ ...prev, vehicle_type: vehicle.value }))}
                                         className={`flex-1 h-14 rounded-full flex items-center justify-center gap-2 font-bold transition-all ${tripData.vehicle_type === vehicle.value
-                                            ? 'bg-[#f5b7b1] text-[#8b1a1a] shadow-md'
-                                            : 'bg-[#faeedb] text-[#5c1a1a]/40'
+                                            ? 'bg-[var(--color-accent)] text-[var(--color-primary)] shadow-md'
+                                            : 'bg-[var(--color-bg-secondary)] text-[var(--color-primary)] opacity-60'
                                             }`}
                                     >
                                         <vehicle.icon className="w-5 h-5" />
@@ -331,21 +331,21 @@ export default function CreateTrip() {
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Mileage (km/L)</Label>
+                                <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Mileage (km/L)</Label>
                                 <Input
                                     type="number"
                                     value={tripData.mileage}
                                     onChange={(e) => setTripData(prev => ({ ...prev, mileage: parseInt(e.target.value) || 15 }))}
-                                    className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6"
+                                    className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label className="text-[#5c1a1a] font-bold text-sm tracking-wide">Fuel Price (₹/L)</Label>
+                                <Label className="text-[var(--color-text-main)] font-bold text-sm tracking-wide">Fuel Price (₹/L)</Label>
                                 <Input
                                     type="number"
                                     value={tripData.fuel_price}
                                     onChange={(e) => setTripData(prev => ({ ...prev, fuel_price: parseInt(e.target.value) || 100 }))}
-                                    className="h-14 bg-[#faeedb] border-transparent text-[#5c1a1a] rounded-2xl focus:ring-0 pl-6"
+                                    className="h-14 bg-[var(--color-bg-secondary)] border-transparent text-[var(--color-text-main)] rounded-2xl focus:ring-0 pl-6"
                                 />
                             </div>
                         </div>
@@ -356,7 +356,7 @@ export default function CreateTrip() {
                 <button
                     onClick={handleSubmit}
                     disabled={isLoading || !tripData.name || !tripData.destinations[0]}
-                    className="w-full h-16 rounded-[2.5rem] bg-[#8b1a1a] text-white font-black text-xl flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed mt-12 shadow-2xl shadow-[#8b1a1a]/40 hover:bg-[#701515] transition-all active:scale-95"
+                    className="w-full h-16 rounded-[2.5rem] bg-[var(--color-primary)] text-white font-black text-xl flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed mt-12 shadow-2xl shadow-[var(--color-primary)]/40 hover:bg-[var(--color-primary-hover)] transition-all active:scale-95"
                 >
                     {isLoading ? (
                         <Loader2 className="w-8 h-8 animate-spin" />

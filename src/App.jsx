@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
@@ -28,11 +28,31 @@ import VoyageTripDetails from './voyage-app/pages/TripDetails';
 
 import Layout from './components/Layout';
 import { LanguageProvider } from './context/LanguageContext';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
+
+const RootRedirect = () => {
+    const { user, loading } = useAuth();
+
+    if (loading) return <div className="min-h-screen flex items-center justify-center bg-[#FEFDF5] text-[#800000]">Loading...</div>;
+
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
+
+    // Role based redirection
+    if (user.role === 'admin' || user.role === 'owner') {
+        return <Navigate to="/owner-dashboard" replace />;
+    }
+    if (user.role === 'partner') {
+        return <Navigate to="/partner-dashboard" replace />;
+    }
+
+    return <Navigate to="/user-dashboard" replace />;
+};
 
 const App = () => {
     console.log('Rendering full App structure...');
@@ -62,7 +82,7 @@ const App = () => {
                                         {/* Protected Routes */}
                                         <Route element={<ProtectedRoute />}>
                                             <Route element={<MaintenanceGuard />}>
-                                                <Route path="/" element={<UserDashboard />} />
+                                                <Route path="/" element={<RootRedirect />} />
                                                 <Route path="/landing" element={<Home />} />
                                                 <Route path="/owner-dashboard" element={<OwnerDashboard />} />
                                                 <Route path="/user-dashboard" element={<UserDashboard />} />

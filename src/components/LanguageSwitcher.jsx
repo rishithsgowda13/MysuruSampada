@@ -15,10 +15,11 @@ const LanguageSwitcher = () => {
                     padding: '0.5rem',
                     borderRadius: '8px',
                     border: '1px solid var(--border-light)',
-                    background: 'var(--color-bg-primary)',
+                    background: 'var(--color-bg-light)',
                     color: 'var(--color-text-main)',
                     fontFamily: 'inherit',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    colorScheme: 'light dark' // Ensures native dropdown follows browser/OS, or we can force it based on class
                 }}
             >
                 <option value="en">English</option>

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Crown, Users, Briefcase, Settings, LogOut, Sun, User, Trash2, CheckCircle, XCircle, Clock, Search } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { useAuth } from '../../context/AuthContext';
 import ThemeToggle from '../../components/ThemeToggle';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 const OwnerDashboard = () => {
     const navigate = useNavigate();
     const { t } = useLanguage();
+    const { logout } = useAuth();
     const [activeTab, setActiveTab] = useState('dashboard');
     const [users, setUsers] = useState([]);
     const [partners, setPartners] = useState([]);
@@ -191,7 +193,7 @@ const OwnerDashboard = () => {
 
     const handleLogout = () => {
         if (window.confirm('Are you sure you want to log out?')) {
-            localStorage.clear();
+            logout();
             navigate('/login');
         }
     };
@@ -204,7 +206,7 @@ const OwnerDashboard = () => {
                         <img src="/mysuru-sampada-logo.jpg" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div>
-                        <h2 className="text-gradient" style={{ fontSize: '2rem', margin: 0 }}>Mysuru Sampada</h2>
+                        <h2 className="text-gradient" style={{ fontSize: '2rem', margin: 0, color: 'var(--color-dashboard-title)' }}>Mysuru Sampada</h2>
                         <p style={{ color: 'var(--color-text-muted)' }}>Admin Console | Hello, {profile.name}</p>
                     </div>
                 </div>
