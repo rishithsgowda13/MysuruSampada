@@ -5,12 +5,17 @@ import { Home, Plus, MapPin, User, LogOut } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useAuth } from '../context/AuthContext';
 
+import Navbar from '../components/Navbar';
+
 export default function Layout({ children, currentPageName }) {
   const { logout } = useAuth();
   const showNav = currentPageName !== 'CreateTrip';
 
   return (
     <div className="min-h-screen transition-colors duration-300" style={{ backgroundColor: 'var(--color-bg-light)', color: 'var(--color-text-main)' }}>
+      {/* Global Navbar */}
+      <Navbar />
+
       <style>{`
         :root {
           /* Use global variables where possible, or define fallbacks */
@@ -67,43 +72,18 @@ export default function Layout({ children, currentPageName }) {
         }
       `}</style>
 
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 flex items-center justify-between glass-card border-b border-white/30">
-        <Link to={createPageUrl('Home')} className="flex items-center gap-3">
-          <div className="rounded-full bg-[var(--color-primary)] flex items-center justify-center shadow-md overflow-hidden border-2 border-[var(--color-primary)]" style={{ width: '48px', height: '48px', minWidth: '48px' }}>
-            <img src="/mysuru-sampada-logo.jpg" alt="Logo" className="w-full h-full object-cover" />
-          </div>
-          <span className="text-2xl font-black text-[var(--color-primary)] tracking-tight">Mysuru Sampada</span>
-        </Link>
-
-        <div className="flex items-center gap-3">
-          <button className="w-10 h-10 rounded-full bg-white/40 flex items-center justify-center hover:bg-white/60 transition-colors shadow-sm">
-            <User className="w-5 h-5 text-[var(--color-primary)]" />
-          </button>
-          <button
-            onClick={() => {
-              logout();
-              window.location.href = '/login';
-            }}
-            className="w-10 h-10 rounded-full bg-white/40 flex items-center justify-center hover:bg-white/60 transition-colors shadow-sm"
-          >
-            <LogOut className="w-5 h-5 text-[var(--color-primary)]" />
-          </button>
-        </div>
-      </header>
-
       {/* Main Content */}
-      <main className="pt-16 pb-24 min-h-screen radial-bg">
+      <main className="pb-24 min-h-screen radial-bg">
         {children}
       </main>
 
       {/* Bottom Navigation */}
       {showNav && (
-        <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--color-bg-secondary)]/60 backdrop-blur-xl border-t border-white/20">
-          <div className="flex items-center justify-around py-2 max-w-md mx-auto">
+        <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--color-bg-light)] border-t border-[var(--color-border-light)] pb-safe pt-2">
+          <div className="flex items-end justify-between px-8 max-w-md mx-auto pb-2">
             <Link
               to={createPageUrl('Home')}
-              className={`flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition-all ${currentPageName === 'Home' ? 'text-[var(--color-primary)] scale-110' : 'text-[var(--color-text-muted)]/60 hover:text-[var(--color-text-muted)]'}`}
+              className={`flex flex-col items-center gap-1 transition-all ${currentPageName === 'Home' ? 'text-[var(--color-primary)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-main)]'}`}
             >
               <Home className="w-6 h-6" />
               <span className="text-[10px] font-medium">Home</span>
@@ -111,17 +91,17 @@ export default function Layout({ children, currentPageName }) {
 
             <Link
               to={createPageUrl('CreateTrip')}
-              className="relative -top-6"
+              className="relative -top-5"
             >
-              <div className="w-16 h-16 rounded-full bg-[var(--color-primary)] flex items-center justify-center shadow-xl shadow-[var(--color-primary)]/40 border-4 border-[var(--color-bg-secondary)]/80 transition-transform hover:scale-110 active:scale-95">
-                <Plus className="w-8 h-8 text-white" />
+              <div className="w-14 h-14 rounded-full bg-[var(--color-primary)] flex items-center justify-center shadow-lg shadow-[var(--color-primary)]/30 border-[4px] border-[var(--color-bg-light)] transition-transform hover:scale-105 active:scale-95">
+                <Plus className="w-8 h-8 text-[var(--color-bg-light)]" />
               </div>
               <span className="text-[10px] text-[var(--color-primary)] font-bold text-center block mt-1">New Trip</span>
             </Link>
 
             <Link
               to={createPageUrl('MyTrips')}
-              className={`flex flex-col items-center gap-1 px-6 py-2 rounded-xl transition-all ${currentPageName === 'MyTrips' ? 'text-[var(--color-primary)] scale-110' : 'text-[var(--color-text-muted)]/60 hover:text-[var(--color-text-muted)]'}`}
+              className={`flex flex-col items-center gap-1 transition-all ${currentPageName === 'MyTrips' ? 'text-[var(--color-primary)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-main)]'}`}
             >
               <MapPin className="w-6 h-6" />
               <span className="text-[10px] font-medium">My Trips</span>

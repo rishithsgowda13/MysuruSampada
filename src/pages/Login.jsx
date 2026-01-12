@@ -56,8 +56,14 @@ const Login = () => {
                 flexDirection: 'column',
                 gap: '2rem'
             }}>
-                <div style={{ textAlign: 'center' }}>
-                    <h2 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{t('welcome_back')}</h2>
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <div className="rounded-full overflow-hidden border-2 border-[#8b1a1a] mx-auto mb-4" style={{ width: '80px', height: '80px' }}>
+                        <img src="/mysuru-sampada-logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+                    </div>
+                    <h1 className="text-gradient" style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 'bold' }}>Mysuru Sampada</h1>
+                    <p style={{ color: 'var(--color-primary)', fontStyle: 'italic', marginBottom: '1.5rem', fontWeight: '500' }}>Experience the Royal Heritage</p>
+
+                    <h2 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)' }}>{t('welcome_back')}</h2>
                     <p style={{ color: 'var(--color-text-muted)' }}>{t('login_subtitle')}</p>
                 </div>
 
@@ -94,8 +100,9 @@ const Login = () => {
                                 style={{
                                     background: 'none',
                                     border: 'none',
-                                    color: 'var(--color-secondary)',
-                                    fontSize: '0.85rem',
+                                    color: 'var(--color-primary)',
+                                    fontSize: '0.9rem',
+                                    fontWeight: '600',
                                     cursor: 'pointer',
                                     padding: 0
                                 }}

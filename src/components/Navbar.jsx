@@ -6,9 +6,16 @@ import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
     const { t } = useLanguage();
-    const { logout } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = React.useState(false);
+
+    // Determine Dashboard Path based on Role
+    let dashboardPath = '/user-dashboard'; // Default
+    if (user) {
+        if (user.role === 'admin' || user.role === 'owner') dashboardPath = '/owner-dashboard';
+        else if (user.role === 'partner') dashboardPath = '/partner-dashboard';
+    }
 
     // Close menu when clicking outside or navigating
     React.useEffect(() => {
@@ -23,7 +30,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <Link to="/" className="navbar-logo" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Link to="/user-dashboard" className="navbar-logo" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div className="rounded-full overflow-hidden border border-[#8b1a1a]" style={{ width: '40px', height: '40px', minWidth: '40px' }}>
                     <img src="/mysuru-sampada-logo.jpg" alt="Logo" className="w-full h-full object-cover" />
                 </div>
@@ -67,13 +74,15 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li><Link to="/explore/hidden-gems" onClick={() => setIsOpen(false)}>{t('hidden_gems')}</Link></li>
-                <li><Link to="/user-dashboard" onClick={() => setIsOpen(false)}>{t('dashboard')}</Link></li>
+                <li><Link to={dashboardPath} onClick={() => setIsOpen(false)}>{t('dashboard')}</Link></li>
                 <li>
                     <button
                         onClick={() => {
-                            logout();
-                            navigate('/login');
-                            setIsOpen(false);
+                            if (window.confirm(t('logout_confirmation') || "Are you sure you want to log out?")) {
+                                logout();
+                                navigate('/login');
+                                setIsOpen(false);
+                            }
                         }}
                         style={{
                             background: 'none',

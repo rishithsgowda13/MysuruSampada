@@ -47,14 +47,11 @@ const OwnerDashboard = () => {
     const [broadcastMsg, setBroadcastMsg] = useState('');
 
     const toggleMaintenance = () => {
-        const password = prompt("Enter Admin Password to change Maintenance Mode:");
-        if (password === "Admin@2025") {
+        const action = maintenanceMode ? 'Deactivate' : 'Activate';
+        if (window.confirm(`Are you sure you want to ${action} Maintenance Mode?`)) {
             const newState = !maintenanceMode;
             setMaintenanceMode(newState);
             localStorage.setItem('maintenanceMode', newState);
-            alert(`Maintenance Mode turned ${newState ? 'ON' : 'OFF'}`);
-        } else if (password !== null) {
-            alert("Incorrect Password!");
         }
     };
 
@@ -245,7 +242,6 @@ const OwnerDashboard = () => {
                         </div>
                     </div>
 
-                    {/* Pending Submissions Section */}
                     {/* Review Modal */}
                     {reviewPlace && (
                         <div style={{
@@ -277,20 +273,20 @@ const OwnerDashboard = () => {
                                     justifyContent: 'space-between',
                                     alignItems: 'center'
                                 }}>
-                                    <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#800000' }}>Review & Edit Submission</h3>
+                                    <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#800000' }}>{t('review_submission')}</h3>
                                     <button onClick={() => setReviewPlace(null)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}><XCircle size={24} color="#800000" /></button>
                                 </div>
                                 <div style={{ padding: '1.5rem' }}>
                                     <div style={{ marginBottom: '1.5rem', padding: '1rem', background: '#fff', borderRadius: '8px', border: '1px solid #fae8b4' }}>
-                                        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: '#666', textTransform: 'uppercase' }}>User Submitted Data</h4>
-                                        <p><strong>Title:</strong> {reviewPlace.title}</p>
-                                        <p><strong>Type:</strong> {reviewPlace.type}</p>
+                                        <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '0.9rem', color: '#666', textTransform: 'uppercase' }}>{t('user_submitted_data')}</h4>
+                                        <p><strong>{t('title')}:</strong> {reviewPlace.title}</p>
+                                        <p><strong>{t('type')}:</strong> {reviewPlace.type}</p>
                                         <p><strong>Location:</strong> {reviewPlace.location}</p>
                                         <p><strong>Short Desc:</strong> {reviewPlace.desc}</p>
                                         <p><strong>Peak Hours:</strong> {reviewPlace.peakHours}</p>
                                     </div>
 
-                                    <h4 style={{ marginBottom: '1rem' }}>Add Admin Details (Required)</h4>
+                                    <h4 style={{ marginBottom: '1rem' }}>{t('add_admin_details')}</h4>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                         <div>
                                             <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>Image URL</label>
@@ -302,7 +298,7 @@ const OwnerDashboard = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>Full Description</label>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>{t('full_description')}</label>
                                             <textarea
                                                 style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc', minHeight: '100px' }}
                                                 value={reviewPlace.fullDesc || ''}
@@ -311,7 +307,7 @@ const OwnerDashboard = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>History</label>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>{t('history')}</label>
                                             <textarea
                                                 style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }}
                                                 value={reviewPlace.history || ''}
@@ -320,7 +316,7 @@ const OwnerDashboard = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>Google Maps URL</label>
+                                            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 600 }}>{t('google_maps_url')}</label>
                                             <input
                                                 style={{ width: '100%', padding: '0.75rem', borderRadius: '8px', border: '1px solid #ccc' }}
                                                 value={reviewPlace.mapUrl || ''}
@@ -331,9 +327,9 @@ const OwnerDashboard = () => {
                                     </div>
 
                                     <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}>
-                                        <button onClick={() => setReviewPlace(null)} className="btn-outline">Cancel</button>
+                                        <button onClick={() => setReviewPlace(null)} className="btn-outline">{t('cancel')}</button>
                                         <button onClick={confirmApprove} className="btn-primary" style={{ backgroundColor: '#16a34a' }}>
-                                            <CheckCircle size={18} style={{ marginRight: '8px' }} /> Approve & Publish
+                                            <CheckCircle size={18} style={{ marginRight: '8px' }} /> {t('approve_publish')}
                                         </button>
                                     </div>
                                 </div>
@@ -344,26 +340,26 @@ const OwnerDashboard = () => {
                     <section style={{ marginBottom: '3rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                             <h3 className="text-gradient" style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <Clock size={24} /> Pending Submissions
+                                <Clock size={24} /> {t('pending_submissions')}
                             </h3>
                             <span style={{ background: 'var(--color-primary)', color: 'white', padding: '4px 12px', borderRadius: '12px', fontSize: '0.9rem' }}>
-                                {pendingSubmissions.length} New
+                                {pendingSubmissions.length} {t('new_badge')}
                             </span>
                         </div>
 
                         {pendingSubmissions.length === 0 ? (
                             <div className="card" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-muted)' }}>
-                                <p>No pending submissions.</p>
+                                <p>{t('no_pending')}</p>
                             </div>
                         ) : (
                             <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
                                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                                     <thead style={{ background: 'var(--color-bg-secondary)' }}>
                                         <tr>
-                                            <th style={{ padding: '1rem', textAlign: 'left', color: 'var(--color-text-main)' }}>Title</th>
-                                            <th style={{ padding: '1rem', textAlign: 'left', color: 'var(--color-text-main)' }}>Type</th>
-                                            <th style={{ padding: '1rem', textAlign: 'left', color: 'var(--color-text-main)' }}>Description</th>
-                                            <th style={{ padding: '1rem', textAlign: 'right', color: 'var(--color-text-main)' }}>Actions</th>
+                                            <th style={{ padding: '1rem', textAlign: 'left', color: 'var(--color-text-main)' }}>{t('title')}</th>
+                                            <th style={{ padding: '1rem', textAlign: 'left', color: 'var(--color-text-main)' }}>{t('type')}</th>
+                                            <th style={{ padding: '1rem', textAlign: 'left', color: 'var(--color-text-main)' }}>{t('description')}</th>
+                                            <th style={{ padding: '1rem', textAlign: 'right', color: 'var(--color-text-main)' }}>{t('actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -378,14 +374,14 @@ const OwnerDashboard = () => {
                                                         className="btn-primary"
                                                         style={{ padding: '8px 16px', fontSize: '0.9rem', display: 'flex', gap: '5px', background: '#eab308', borderColor: '#eab308', color: '#fff' }}
                                                     >
-                                                        Review
+                                                        {t('review')}
                                                     </button>
                                                     <button
                                                         onClick={() => handleReject(sub.id)}
                                                         className="btn-outline"
                                                         style={{ padding: '8px 16px', fontSize: '0.9rem', display: 'flex', gap: '5px', color: '#dc2626', borderColor: '#dc2626' }}
                                                     >
-                                                        <XCircle size={16} /> Reject
+                                                        <XCircle size={16} /> {t('reject')}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -440,7 +436,7 @@ const OwnerDashboard = () => {
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="3" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-muted)' }}>No users found.</td>
+                                            <td colSpan="3" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-muted)' }}>{t('no_users')}</td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -449,7 +445,7 @@ const OwnerDashboard = () => {
 
                         {/* Partners Directory */}
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                            <h3 className="text-gradient" style={{ fontSize: '1.5rem' }}>Partner Directory</h3>
+                            <h3 className="text-gradient" style={{ fontSize: '1.5rem' }}>{t('partners_directory')}</h3>
 
                             {/* Partner Search Bar */}
                             <div style={{ position: 'relative', minWidth: '300px' }}>
@@ -475,9 +471,9 @@ const OwnerDashboard = () => {
                             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                                 <thead>
                                     <tr style={{ background: 'var(--color-bg-secondary)', textAlign: 'left' }}>
-                                        <th style={{ padding: '1rem', color: 'var(--color-text-main)' }}>Details</th>
-                                        <th style={{ padding: '1rem', color: 'var(--color-text-main)' }}>Contact</th>
-                                        <th style={{ padding: '1rem', color: 'var(--color-text-main)' }}>Status</th>
+                                        <th style={{ padding: '1rem', color: 'var(--color-text-main)' }}>{t('details')}</th>
+                                        <th style={{ padding: '1rem', color: 'var(--color-text-main)' }}>{t('contact')}</th>
+                                        <th style={{ padding: '1rem', color: 'var(--color-text-main)' }}>{t('status')}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -492,13 +488,13 @@ const OwnerDashboard = () => {
                                                     <div>{partner.phone}</div>
                                                 </td>
                                                 <td style={{ padding: '1rem', color: 'var(--color-text-muted)' }}>
-                                                    <span style={{ background: '#dcfce7', color: '#166534', padding: '4px 8px', borderRadius: '12px', fontSize: '0.8rem' }}>Active</span>
+                                                    <span style={{ background: '#dcfce7', color: '#166534', padding: '4px 8px', borderRadius: '12px', fontSize: '0.8rem' }}>{t('active')}</span>
                                                 </td>
                                             </tr>
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="3" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-muted)' }}>No partners found.</td>
+                                            <td colSpan="3" style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-muted)' }}>{t('no_partners')}</td>
                                         </tr>
                                     )}
                                 </tbody>
@@ -513,7 +509,7 @@ const OwnerDashboard = () => {
                     <div className="card" style={{ padding: '2rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                             <Settings size={24} color="var(--color-primary)" />
-                            <h3 style={{ fontSize: '1.5rem' }}>Preferences</h3>
+                            <h3 style={{ fontSize: '1.5rem' }}>{t('preferences')}</h3>
                         </div>
 
                         <div style={{ display: 'grid', gap: '1.5rem' }}>
@@ -543,9 +539,9 @@ const OwnerDashboard = () => {
 
                         <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             <div>
-                                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Maintenance Mode</h4>
+                                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>{t('maintenance_mode')}</h4>
                                 <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-                                    Pauses website for all non-admin users. Use for updates.
+                                    {t('maintenance_desc')}
                                 </p>
                             </div>
                             <button
@@ -563,12 +559,12 @@ const OwnerDashboard = () => {
                         </div>
 
                         <div>
-                            <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Broadcast Alert</h4>
+                            <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>{t('broadcast_alert')}</h4>
                             <form onSubmit={sendBroadcast} style={{ display: 'grid', gap: '1rem' }}>
                                 <textarea
                                     value={broadcastMsg}
                                     onChange={(e) => setBroadcastMsg(e.target.value)}
-                                    placeholder="Type an announcement for all users..."
+                                    placeholder={t('broadcast_placeholder')}
                                     style={{
                                         width: '100%',
                                         padding: '1rem',
@@ -579,7 +575,7 @@ const OwnerDashboard = () => {
                                     }}
                                 />
                                 <button type="submit" className="btn-primary" style={{ width: 'fit-content' }}>
-                                    Send Broadcast
+                                    {t('send_broadcast')}
                                 </button>
                             </form>
                         </div>
@@ -666,8 +662,9 @@ const OwnerDashboard = () => {
                     </div>
 
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 

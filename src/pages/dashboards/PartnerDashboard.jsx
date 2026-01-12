@@ -30,7 +30,7 @@ const PartnerDashboard = () => {
     const [adConfig, setAdConfig] = useState({ content: '', duration: 1 });
 
     const handleUpgrade = () => {
-        if (window.confirm("Upgrade to PRO Plan for ₹999/month?")) {
+        if (window.confirm(t('upgrade_prompt'))) {
             setPlan('PRO');
             localStorage.setItem('partner_plan', 'PRO');
             alert("Welcome to Partner PRO! 🌟");
@@ -122,7 +122,7 @@ const PartnerDashboard = () => {
     };
 
     const handleLogout = () => {
-        if (window.confirm("Are you sure you want to log out?")) {
+        if (window.confirm(t('are_you_sure_logout'))) {
             localStorage.removeItem('partnerName');
             localStorage.removeItem('role');
             navigate('/login');
@@ -166,15 +166,15 @@ const PartnerDashboard = () => {
                                 Analytics
                             </h3>
                             <div className="text-gradient" style={{ marginTop: '1rem', fontSize: '2.5rem', fontWeight: 'bold' }}>+24%</div>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Engagement this week</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>{t('engagement_week')}</p>
                         </div>
                         <div className="card" style={{ padding: '2rem' }}>
                             <h3 style={{ color: 'var(--color-text-main)', display: 'flex', alignItems: 'center' }}>
                                 <Users size={20} style={{ marginRight: '10px', color: 'var(--color-secondary)' }} />
-                                Visitors
+                                {t('visitors')}
                             </h3>
                             <div style={{ marginTop: '1rem', fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--color-primary)' }}>1,204</div>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Total views</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>{t('total_views')}</p>
                         </div>
                     </div>
 
@@ -184,15 +184,15 @@ const PartnerDashboard = () => {
                             <div>
                                 <h3 style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                     <Crown size={24} color={plan === 'PRO' ? 'gold' : 'gray'} fill={plan === 'PRO' ? 'gold' : 'none'} />
-                                    Subscription Plan: <span className="text-gradient">{plan}</span>
+                                    {t('subscription_plan')}: <span className="text-gradient">{plan}</span>
                                 </h3>
                                 <p style={{ color: 'var(--color-text-muted)', marginTop: '0.5rem' }}>
-                                    {plan === 'FREE' ? 'Upgrade to unlock premium features and visibility.' : 'You are enjoying premium benefits!'}
+                                    {plan === 'FREE' ? t('upgrade_benefit_text') : t('premium_benefit_text')}
                                 </p>
                             </div>
                             {plan === 'FREE' && (
                                 <button onClick={handleUpgrade} className="btn-primary" style={{ background: 'var(--color-accent)' }}>
-                                    Upgrade to PRO (₹999/mo)
+                                    {t('upgrade_btn_text')}
                                 </button>
                             )}
                         </div>
@@ -201,13 +201,13 @@ const PartnerDashboard = () => {
                             {/* Pro Features List */}
                             <div style={{ padding: '1rem', background: 'var(--color-bg-secondary)', borderRadius: '8px' }}>
                                 <h4 style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <Check size={16} color="green" /> Pro Benefits
+                                    <Check size={16} color="green" /> {t('pro_benefits')}
                                 </h4>
                                 <ul style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', paddingLeft: '1.2rem' }}>
-                                    <li>Featured in Search Results</li>
-                                    <li>Advanced Analytics Dashboard</li>
-                                    <li>Priority Ad Placement</li>
-                                    <li>"Verified Partner" Badge</li>
+                                    <li>{t('benefit_1')}</li>
+                                    <li>{t('benefit_2')}</li>
+                                    <li>{t('benefit_3')}</li>
+                                    <li>{t('benefit_4')}</li>
                                 </ul>
                             </div>
                         </div>
@@ -217,43 +217,43 @@ const PartnerDashboard = () => {
                     <section className="card" style={{ padding: '2rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                             <Megaphone size={24} color="var(--color-primary)" />
-                            <h3 style={{ fontSize: '1.5rem' }}>Run Ad Campaign</h3>
+                            <h3 style={{ fontSize: '1.5rem' }}>{t('run_ad_campaign')}</h3>
                         </div>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
                             <form onSubmit={handleBuyAd} style={{ display: 'grid', gap: '1rem' }}>
                                 <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-text-muted)' }}>Ad Content / Offer</label>
+                                    <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-text-muted)' }}>{t('ad_content')}</label>
                                     <textarea
                                         value={adConfig.content}
                                         onChange={(e) => setAdConfig({ ...adConfig, content: e.target.value })}
-                                        placeholder="E.g., Flat 50% OFF on Weekend Stays! Book Now."
+                                        placeholder={t('ad_content_placeholder')}
                                         style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)', minHeight: '80px' }}
                                     />
                                 </div>
                                 <div>
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-text-muted)' }}>Duration & Cost</label>
+                                    <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--color-text-muted)' }}>{t('duration_cost')}</label>
                                     <select
                                         value={adConfig.duration}
                                         onChange={(e) => setAdConfig({ ...adConfig, duration: parseInt(e.target.value) })}
                                         style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--border-light)' }}
                                     >
-                                        <option value={1}>1 Day (₹100)</option>
-                                        <option value={3}>3 Days (₹250)</option>
-                                        <option value={7}>7 Days (₹500)</option>
-                                        <option value={30}>1 Month (₹1500)</option>
+                                        <option value={1}>{t('day_1')}</option>
+                                        <option value={3}>{t('days_3')}</option>
+                                        <option value={7}>{t('days_7')}</option>
+                                        <option value={30}>{t('month_1')}</option>
                                     </select>
                                 </div>
                                 <button type="submit" className="btn-primary">
-                                    Promote Now
+                                    {t('promote_now')}
                                 </button>
                             </form>
 
                             <div style={{ padding: '1rem', background: 'var(--color-bg-secondary)', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                <h4 style={{ marginBottom: '1rem' }}>Preview</h4>
+                                <h4 style={{ marginBottom: '1rem' }}>{t('preview')}</h4>
                                 <div className="card" style={{ borderLeft: '4px solid var(--color-accent)', padding: '1rem' }}>
                                     <h5 style={{ fontSize: '1rem', marginBottom: '0.2rem' }}>{partnerName}</h5>
                                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>{adConfig.content || "Your ad text here..."}</p>
-                                    <div style={{ marginTop: '0.5rem', fontSize: '0.7rem', color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>Sponsored</div>
+                                    <div style={{ marginTop: '0.5rem', fontSize: '0.7rem', color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>{t('sponsored')}</div>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +268,7 @@ const PartnerDashboard = () => {
                     <div className="card" style={{ padding: '2rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                             <Settings size={24} color="var(--color-primary)" />
-                            <h3 style={{ fontSize: '1.5rem' }}>Preferences</h3>
+                            <h3 style={{ fontSize: '1.5rem' }}>{t('preferences')}</h3>
                         </div>
 
                         <div style={{ display: 'grid', gap: '1.5rem' }}>

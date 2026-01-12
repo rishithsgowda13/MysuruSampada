@@ -7,50 +7,47 @@ import { motion } from 'framer-motion';
 const UserDashboard = () => {
     const { t } = useLanguage();
 
-    // Fallback if translations are missing
-    const t_safe = (key, defaultText) => t(key) === key ? defaultText : t(key);
-
     // Menu Items Configuration
     const menuItems = [
         {
-            title: 'Explore',
+            title: t('explore'),
             icon: <Compass size={32} color="#800000" />,
-            desc: 'Discover hidden gems',
+            desc: t('explore_desc_dash'),
             path: '/explore',
             bgColor: '#FFF8E1' // Light Amber tint
         },
         {
-            title: 'Trip Planner',
+            title: t('trip_planning'),
             icon: <Calendar size={32} color="#800000" />,
-            desc: 'Create your perfect itinerary',
+            desc: t('agent_desc'),
             path: '/voyage',
             bgColor: '#E1F5FE' // Light Blue tint
         },
         {
-            title: 'Arts & Crafts',
+            title: t('all_crafts'),
             icon: <Users size={32} color="#800000" />,
-            desc: 'Meet local artisans',
+            desc: t('arts_desc'),
             path: '/landing',
             bgColor: '#FFF3E0' // Light Orange tint
         },
         {
-            title: 'Saved Places',
+            title: t('saved_places'),
             icon: <Heart size={32} color="#800000" />,
-            desc: 'Your favorite spots',
+            desc: t('saved_desc'),
             path: '/explore/saved-places',
             bgColor: '#FCE4EC' // Light Pink tint
         },
         {
-            title: 'My Trips',
+            title: t('trips'),
             icon: <Map size={32} color="#800000" />,
-            desc: 'View upcoming journeys',
+            desc: t('trips_desc_dash'),
             path: '/voyage/my-trips',
             bgColor: '#E8F5E9' // Light Green tint
         },
         {
-            title: 'Google Maps',
+            title: t('google_maps'),
             icon: <MapPinned size={32} color="#800000" />,
-            desc: 'Navigate Mysuru freely',
+            desc: t('maps_desc_dash'),
             path: 'https://www.google.com/maps/search/Mysuru,+Karnataka',
             isExternal: true,
             bgColor: '#E3F2FD' // Light Blue
@@ -78,17 +75,17 @@ const UserDashboard = () => {
                             <img src="/mysuru-sampada-logo.jpg" alt="Mysuru Sampada" className="w-full h-full object-cover" />
                         </div>
                         <h1 className="dashboard-title" style={{ color: 'var(--color-dashboard-title)' }}>
-                            Mysuru Sampada
+                            {t('mysuru_sampada')}
                         </h1>
                     </div>
                     <p className="dashboard-subtitle" style={{ color: 'var(--color-dashboard-title)', opacity: 0.9 }}>
-                        Unveiling the Hidden Heritage of Mysuru
+                        {t('dashboard_subtitle')}
                     </p>
                     <p className="text-sm font-medium tracking-wide italic mt-1" style={{ color: 'var(--color-dashboard-title)', opacity: 0.8 }}>
-                        From Local Hands to Curious Hearts
+                        {t('dashboard_tagline')}
                     </p>
                     <h2 className="dashboard-welcome" style={{ color: 'var(--color-dashboard-title)' }}>
-                        Hello, <span className="font-bold">{localStorage.getItem('userName') || 'Traveler'}</span>
+                        {t('hello')}, <span className="font-bold">{localStorage.getItem('userName') || 'Traveler'}</span>
                     </h2>
                 </div>
 

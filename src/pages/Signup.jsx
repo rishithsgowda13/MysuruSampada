@@ -93,11 +93,19 @@ const Signup = () => {
     return (
         <div className="page-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
             <div className="glass-panel" style={{ padding: '2.5rem', width: '100%', maxWidth: '500px' }}>
-                <header style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem' }}>
-                    <button onClick={() => navigate('/login')} className="btn-outline" style={{ padding: '8px', borderRadius: '50%', border: 'none', marginRight: '1rem' }}>
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h2 className="text-gradient" style={{ fontSize: '2rem', margin: 0 }}>{t('create_account_title')}</h2>
+                <header style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem', textAlign: 'center' }}>
+                    <div className="rounded-full overflow-hidden border-2 border-[#8b1a1a] mb-4" style={{ width: '80px', height: '80px' }}>
+                        <img src="/mysuru-sampada-logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+                    </div>
+                    <h1 className="text-gradient" style={{ fontSize: '2rem', marginBottom: '0.25rem', fontWeight: 'bold' }}>Mysuru Sampada</h1>
+                    <p style={{ color: 'var(--color-primary)', fontStyle: 'italic', marginBottom: '1.5rem', fontWeight: '500' }}>Experience the Royal Heritage</p>
+
+                    <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                        <button onClick={() => navigate('/login')} className="btn-outline" style={{ padding: '8px', borderRadius: '50%', border: 'none', marginRight: '1rem', position: 'absolute', left: '3rem' }}>
+                            <ArrowLeft size={20} />
+                        </button>
+                        <h2 className="text-gradient" style={{ fontSize: '1.8rem', margin: 0 }}>{t('create_account_title')}</h2>
+                    </div>
                 </header>
 
                 {/* Progress Indicators */}

@@ -177,6 +177,10 @@ body.light-mode::before {
   opacity: 1;
 }
 
+.navbar-toggle {
+  display: none;
+}
+
 .navbar-actions {
   display: flex;
   gap: 1rem;
@@ -445,7 +449,7 @@ input:focus {
     top: 100%;
     left: 0;
     width: 100%;
-    background: var(--color-white);
+    background: var(--color-primary);
     flex-direction: column;
     padding: 1rem;
     box-shadow: var(--shadow-md);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import ThemeToggle from '../components/ThemeToggle';
 import LanguageSwitcher from '../components/LanguageSwitcher';
@@ -7,6 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Settings = () => {
     const { t } = useLanguage();
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
     // User State
@@ -105,7 +107,7 @@ const Settings = () => {
 
     const handleLogout = () => {
         if (window.confirm("Are you sure you want to log out?")) {
-            localStorage.clear(); // Or specific keys
+            logout();
             navigate('/login');
         }
     };
@@ -140,9 +142,9 @@ const Settings = () => {
                         boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
                         textAlign: 'center'
                     }}>
-                        <h3 style={{ color: '#2C1810', marginBottom: '1rem' }}>Verify Contact Details</h3>
+                        <h3 style={{ color: '#2C1810', marginBottom: '1rem' }}>{t('verify_contact_header')}</h3>
                         <p style={{ color: '#5D4037', marginBottom: '1.5rem' }}>
-                            We've sent an OTP to your new {profile.email !== (localStorage.getItem('userEmail') || 'traveler@example.com') ? 'email' : 'phone number'}.
+                            {t('otp_sent_to')} {profile.email !== (localStorage.getItem('userEmail') || 'traveler@example.com') ? 'email' : 'phone number'}.
                         </p>
 
                         <form onSubmit={verifyOtp} style={{ display: 'grid', gap: '1rem' }}>
@@ -227,7 +229,7 @@ const Settings = () => {
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                             <SettingsIcon size={24} color="var(--color-primary)" />
-                            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', margin: 0 }}>Preferences</h3>
+                            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', margin: 0 }}>{t('preferences')}</h3>
                         </div>
 
                         <div style={{ display: 'grid', gap: '1.5rem' }}>
@@ -263,7 +265,7 @@ const Settings = () => {
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                             <User size={24} color="var(--color-primary)" />
-                            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', margin: 0 }}>Edit Profile</h3>
+                            <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', margin: 0 }}>{t('edit_profile')}</h3>
                         </div>
                         <form onSubmit={handleSaveProfile} style={{ display: 'grid', gap: '1.5rem' }}>
                             <div style={{ display: 'grid', gap: '0.5rem' }}>
@@ -306,7 +308,7 @@ const Settings = () => {
                                     cursor: 'pointer'
                                 }}
                             >
-                                Save
+                                {t('save')}
                             </button>
                         </form>
                     </div>
@@ -318,10 +320,10 @@ const Settings = () => {
                         padding: '2rem',
                         boxShadow: 'var(--shadow-sm)'
                     }}>
-                        <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>Security</h3>
+                        <h3 style={{ fontSize: '1.5rem', color: 'var(--color-text-main)', marginBottom: '1.5rem' }}>{t('security')}</h3>
 
                         <form onSubmit={handleUpdatePassword} style={{ display: 'grid', gap: '1rem' }}>
-                            <h4 style={{ color: 'var(--color-text-main)', margin: 0 }}>Change Password</h4>
+                            <h4 style={{ color: 'var(--color-text-main)', margin: 0 }}>{t('change_password')}</h4>
 
                             <div style={{ display: 'grid', gap: '0.5rem' }}>
                                 <label style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Old Password</label>
@@ -393,10 +395,10 @@ const Settings = () => {
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D32F2F', marginBottom: '1rem' }}>
                             <Trash2 size={20} />
-                            <h4 style={{ fontSize: '1.2rem', margin: 0 }}>Delete Account</h4>
+                            <h4 style={{ fontSize: '1.2rem', margin: 0 }}>{t('delete_account')}</h4>
                         </div>
                         <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>
-                            Once you delete your account, there is no going back. Please be certain.
+                            {t('are_you_sure_delete')}
                         </p>
 
                         <form onSubmit={handleDeleteAccount} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -462,7 +464,7 @@ const Settings = () => {
                             }}
                         >
                             <LogOut size={20} />
-                            Log Out
+                            {t('logout')}
                         </button>
                     </div>
 

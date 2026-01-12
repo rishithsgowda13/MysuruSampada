@@ -14,6 +14,7 @@ import MapView from './pages/MapView';
 import Maintenance from './pages/Maintenance';
 import ArtisanProfile from './pages/ArtisanProfile';
 import MaintenanceGuard from './components/MaintenanceGuard';
+import BroadcastBanner from './components/BroadcastBanner';
 import Settings from './pages/Settings';
 import TripDetail from './pages/trip-planner/TripDetail';
 
@@ -61,27 +62,32 @@ const App = () => {
             <LanguageProvider>
                 <AuthProvider>
                     <Router>
-                        {/* Your Travel Agent Routes - Outside main Layout */}
+                        <BroadcastBanner />
                         <Routes>
-                            <Route path="/voyage" element={<VoyageLayout currentPageName="Home"><VoyageHome /></VoyageLayout>} />
-                            <Route path="/voyage/create" element={<VoyageLayout currentPageName="CreateTrip"><VoyageCreateTrip /></VoyageLayout>} />
-                            <Route path="/voyage/my-trips" element={<VoyageLayout currentPageName="MyTrips"><VoyageMyTrips /></VoyageLayout>} />
-                            <Route path="/voyage/details" element={<VoyageLayout currentPageName="TripDetails"><VoyageTripDetails /></VoyageLayout>} />
+                            {/* Global Maintenance Guard Wraps EVERYTHING */}
+                            <Route element={<MaintenanceGuard />}>
 
-                            {/* Main App Routes */}
-                            <Route path="/*" element={
-                                <Layout>
-                                    <Routes>
-                                        <Route path="/maintenance" element={<Maintenance />} />
-                                        <Route path="/login" element={<Login />} />
-                                        <Route path="/forgot-password" element={<ForgotPassword />} />
-                                        <Route path="/signup" element={<Signup />} />
-                                        <Route path="/travel-ai-demo" element={<TravelAIHome />} />
-                                        <Route path="/travel-ai-demo/detail" element={<TripDetail />} />
+                                {/* Maintenance Page - Standalone */}
+                                <Route path="/maintenance" element={<Maintenance />} />
 
-                                        {/* Protected Routes */}
-                                        <Route element={<ProtectedRoute />}>
-                                            <Route element={<MaintenanceGuard />}>
+                                {/* Your Travel Agent Routes - Outside main Layout */}
+                                <Route path="/voyage" element={<VoyageLayout currentPageName="Home"><VoyageHome /></VoyageLayout>} />
+                                <Route path="/voyage/create" element={<VoyageLayout currentPageName="CreateTrip"><VoyageCreateTrip /></VoyageLayout>} />
+                                <Route path="/voyage/my-trips" element={<VoyageLayout currentPageName="MyTrips"><VoyageMyTrips /></VoyageLayout>} />
+                                <Route path="/voyage/details" element={<VoyageLayout currentPageName="TripDetails"><VoyageTripDetails /></VoyageLayout>} />
+
+                                {/* Main App Routes */}
+                                <Route path="/*" element={
+                                    <Layout>
+                                        <Routes>
+                                            <Route path="/login" element={<Login />} />
+                                            <Route path="/forgot-password" element={<ForgotPassword />} />
+                                            <Route path="/signup" element={<Signup />} />
+                                            <Route path="/travel-ai-demo" element={<TravelAIHome />} />
+                                            <Route path="/travel-ai-demo/detail" element={<TripDetail />} />
+
+                                            {/* Protected Routes */}
+                                            <Route element={<ProtectedRoute />}>
                                                 <Route path="/" element={<RootRedirect />} />
                                                 <Route path="/landing" element={<Home />} />
                                                 <Route path="/owner-dashboard" element={<OwnerDashboard />} />
@@ -94,10 +100,10 @@ const App = () => {
                                                 <Route path="/map" element={<MapView />} />
                                                 <Route path="/artisan/:id" element={<ArtisanProfile />} />
                                             </Route>
-                                        </Route>
-                                    </Routes>
-                                </Layout>
-                            } />
+                                        </Routes>
+                                    </Layout>
+                                } />
+                            </Route>
                         </Routes>
                     </Router>
                 </AuthProvider>
