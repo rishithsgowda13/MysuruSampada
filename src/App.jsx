@@ -19,6 +19,9 @@ import TripDetail from './pages/trip-planner/TripDetail';
 
 import TravelAIHome from './pages/trip-planner/TravelAIHome';
 
+import ChatBot from "./components/ChatBot";
+
+
 // Your Travel Agent Imports
 import VoyageLayout from './voyage-app/Layout';
 import VoyageHome from './voyage-app/pages/Home';
@@ -31,6 +34,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 const queryClient = new QueryClient();
 
