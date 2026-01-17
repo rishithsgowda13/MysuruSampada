@@ -240,6 +240,13 @@ export default function TripDetails() {
                         <ArrowLeft className="w-5 h-5 text-[var(--color-primary)]" />
                     </button>
                 </Link>
+                <div className="flex-1" />
+                <Link to={createPageUrl(`CreateTrip?edit=${trip.id}`)}>
+                    <button className="px-4 py-2 rounded-full glass-card flex items-center gap-2 hover:bg-white/10 transition-colors text-sm font-medium text-[var(--color-primary)]">
+                        <Sparkles className="w-4 h-4" />
+                        Edit Trip
+                    </button>
+                </Link>
             </div>
 
             {/* Trip Header */}
