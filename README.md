@@ -4,6 +4,11 @@
 
 # Mysuru Sampada – Multi-Language Tourism Platform
 
+<p align="center">
+  🌐 <a href="https://mysurusampada.vercel.app" target="_blank"><b>Live Demo</b></a>
+</p>
+
+
 Mysuru Sampada is a modern, multi-language tourism web application designed to showcase Mysuru’s cultural heritage, attractions, and travel experiences through an interactive and visually rich interface.
 
 The project is built with a **full-stack vision**, where the frontend is fully implemented and backend services have been developed locally and are ready for integration.
