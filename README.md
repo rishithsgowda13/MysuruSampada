@@ -12,6 +12,8 @@ This project is built with a **full-stack vision**. The frontend is fully implem
 
 ---
 
+
+
 ## 🌟 Project Highlights
 - 🌍 Multi-language support (English, Hindi, Kannada)
 - 🌗 Light Mode & Dark Mode
