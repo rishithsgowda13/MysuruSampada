@@ -82,6 +82,7 @@ A comprehensive trip planning workflow where users configure destinations, dates
 ### Admin Dashboard
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
+
 ---
 
 ## 📁 Project Structure
