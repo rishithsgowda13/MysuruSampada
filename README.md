@@ -2,7 +2,7 @@
   <img src="./logo.jpeg" alt="Mysuru Sampada Logo" width="220"/>
 </p>
 
-# Mysuru Sampada – Multi-Language Tourism Platform
+# Mysuru Sampada – A Multi-Language Tourism Platform
 
 Mysuru Sampada is a modern, multi-language tourism web application designed to showcase Mysuru’s cultural heritage, hidden gems, and travel experiences through an interactive and feature-rich interface.
 
