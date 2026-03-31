@@ -2,6 +2,8 @@ import React, { useState, useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import ParticleBackground from './ParticleBackground';
+import ChatBot from './ChatBot';
+
 
 const Layout = ({ children }) => {
     const [theme, setTheme] = useState(() => {
@@ -36,6 +38,8 @@ const Layout = ({ children }) => {
             <div className="layout-content" style={{ position: 'relative', zIndex: 1 }}>
                 {children}
             </div>
+              {/* Global Chatbot */}
+            <ChatBot />
         </>
     );
 };

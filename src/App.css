@@ -38,3 +38,28 @@
 .read-the-docs {
   color: #888;
 }
+
+//chat bot styles
+.chatbox {
+  width: 350px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.messages {
+  height: 250px;
+  overflow-y: auto;
+}
+
+.user {
+  text-align: right;
+  margin: 6px;
+  font-weight: bold;
+}
+
+.bot {
+  text-align: left;
+  margin: 6px;
+  color: #444;
+}
